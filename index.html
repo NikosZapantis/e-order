@@ -4,6 +4,7 @@
     <title>E-Paraggelia Application</title>
     <link rel="stylesheet" type="text/css" href="/src/e-order.css">
     <link rel="icon" type="image/png" href="e-order.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -20,9 +21,9 @@
     </section>
 
     <section id="my-cart">
-        <button id="my-cart-button" onclick="toggleCart()">My Cart</button>
-        <ul id="cart-items"></ul>
-        <button onclick="checkout()">Checkout</button>
+        <button id="view-cart-button" onclick="viewCart()">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
     </section>
 
     <footer>

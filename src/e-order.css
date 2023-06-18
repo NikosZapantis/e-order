@@ -19,7 +19,7 @@ body {
 footer {
     background-color: rgb(173, 175, 17);
     color: black;
-    padding: 0px 1px;
+    padding: 0px;
     margin: auto;
     position: fixed;
     left: 0;
@@ -29,27 +29,23 @@ footer {
 
 #my-cart {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 3%;
+    right: 3%;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: #3ab813;
-    padding: 1px;
+    padding: 7px;
 }
 
-/* #my-cart {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #ff0000;
-    padding: 10px;
-    display: none;
+#my-cart:hover {
+    cursor: pointer;
 }
 
-#my-cart.cart-open {
-    display: block;
+#view-cart-button {
+    border: none;
+    background-color: transparent;
 }
 
-#my-cart-button {
-    margin-bottom: 10px;
-} */
+#view-cart-button:hover {
+    cursor: pointer;
+}
