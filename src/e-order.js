@@ -56,11 +56,6 @@ function filterProducts(categoryId) {
 // Function to add a product to the cart
 function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
-}
-
-// Function to add a product to the cart
-function addToCart(productId) {
-    const selectedProduct = products.find(product => product.id === productId);
 
     // Add the selected product to the cart
     cartItems.push(selectedProduct);
