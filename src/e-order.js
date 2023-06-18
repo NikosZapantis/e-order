@@ -1,3 +1,4 @@
+//Category array
 const categories = [
     { id: 1, name: 'Category 1' },
     { id: 2, name: 'Category 2' },
@@ -6,6 +7,7 @@ const categories = [
     { id: 5, name: 'Category 5' },
 ];
 
+//Products array
 const products = [
     { id: 1, name: 'Product 1', price: 10, categoryId: 1 },
     { id: 2, name: 'Product 2', price: 20, categoryId: 2 },
@@ -54,6 +56,37 @@ function filterProducts(categoryId) {
 // Function to add a product to the cart
 function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
+}
+
+// Function to add a product to the cart
+function addToCart(productId) {
+    const selectedProduct = products.find(product => product.id === productId);
+
+    // Add the selected product to the cart
+    cartItems.push(selectedProduct);
+
+    // Update the cart display
+    const cartItemsList = document.getElementById('cart-items');
+    const cartItem = document.createElement('li');
+    cartItem.innerHTML = `
+        <span>${selectedProduct.name}</span>
+        <span>$${selectedProduct.price}</span>
+    `;
+    cartItemsList.appendChild(cartItem);
+}
+
+// Function to toggle the cart visibility
+function toggleCart() {
+    const myCartSection = document.getElementById('my-cart');
+    myCartSection.classList.toggle('cart-open');
+    isCartOpen = !isCartOpen;
+}
+
+function checkout() {
+    // Clear the cart and update the display
+    cartItems = [];
+    const cartItemsList = document.getElementById('cart-items');
+    cartItemsList.innerHTML = '';
 }
 
 // Display the categories

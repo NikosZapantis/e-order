@@ -3,6 +3,7 @@
 <head>
     <title>E-Paraggelia Application</title>
     <link rel="stylesheet" type="text/css" href="/src/e-order.css">
+    <link rel="icon" type="image/png" href="e-order.jpg">
 </head>
 
 <body>
@@ -19,11 +20,13 @@
     </section>
 
     <section id="my-cart">
-
+        <button id="my-cart-button" onclick="toggleCart()">My Cart</button>
+        <ul id="cart-items"></ul>
+        <button onclick="checkout()">Checkout</button>
     </section>
 
     <footer>
-        <p>&copy; 2023 E-Order Application</p>
+        <p>&copy; 2023 E-Paraggeliamou Application</p>
     </footer>
 
     <script src="src/e-order.js"></script>
