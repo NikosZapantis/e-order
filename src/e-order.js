@@ -66,6 +66,7 @@ function addToCart(productId) {
 function viewCart() {
     // Redirect to the cart page where you can display the cart items
     // window.location.href = 'cart.html';
+    window.location.href = '/my-cart.html';
 }
 
 //Displaying the categories
