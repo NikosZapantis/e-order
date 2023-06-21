@@ -16,13 +16,14 @@ const products = [
     { id: 5, name: 'Product 5', price: 25, categoryId: 5 },
 ];
 
+//Function that creates the categories and displaying them
 function displayCategories() {
     const categoryList = document.getElementById('category-list');
 
-    // Clear existing content
+    //Clearing existing content
     categoryList.innerHTML = '';
 
-    // Loop through categories and create buttons
+    //Loop through categories and creating buttons
     categories.forEach(category => {
         const button = document.createElement('button');
         button.innerText = category.name;
@@ -31,17 +32,17 @@ function displayCategories() {
     });
 }
 
-// Function to filter and display products by category
+//Function to filter and display products by category
 function filterProducts(categoryId) {
     const productList = document.getElementById('product-list');
 
-    // Clear existing content
+    //Clearing existing content
     productList.innerHTML = '';
 
-    // Filter products by category
+    //Filtering products by category
     const filteredProducts = products.filter(product => product.categoryId === categoryId);
 
-    // Loop through filtered products and create HTML elements
+    //Loop through filtered products and creating HTML elements
     filteredProducts.forEach(product => {
         const item = document.createElement('div');
         item.innerHTML = `
@@ -53,19 +54,19 @@ function filterProducts(categoryId) {
     });
 }
 
-// Function to add a product to the cart
+//Function to add a product to the cart
 function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
 
-    // Add the selected product to the cart
+    //Pushing the selected product to the cart
     cartItems.push(selectedProduct);
 }
 
-// Function to view the cart page
+//Function to view the cart page
 function viewCart() {
     // Redirect to the cart page where you can display the cart items
     // window.location.href = 'cart.html';
 }
 
-// Display the categories
+//Displaying the categories
 displayCategories();
