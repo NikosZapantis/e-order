@@ -9,11 +9,11 @@ const categories = [
 
 //Products array
 const products = [
-    { id: 1, name: 'Product 1', price: 10, categoryId: 1 },
-    { id: 2, name: 'Product 2', price: 20, categoryId: 2 },
-    { id: 3, name: 'Product 3', price: 30, categoryId: 1 },
-    { id: 4, name: 'Product 4', price: 15, categoryId: 3 },
-    { id: 5, name: 'Product 5', price: 25, categoryId: 5 },
+    { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1 },
+    { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
+    { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
+    { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
+    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
 ];
 
 //Function that creates the categories and displaying them
@@ -32,6 +32,12 @@ function displayCategories() {
     });
 }
 
+//Function to retrieve the quantity of specific product
+function getProductQuantity(productId) {
+    const selectedProduct = products.find(product => product.id === productId);
+    return selectedProduct ? selectedProduct.quantity : 0;
+}
+
 //Function to filter and display products by category
 function filterProducts(categoryId) {
     const productList = document.getElementById('product-list');
@@ -46,9 +52,9 @@ function filterProducts(categoryId) {
     filteredProducts.forEach(product => {
         const item = document.createElement('div');
         item.innerHTML = `
-        <h3>${product.name}</h3>
-        <p>Price: $${product.price}</p>
-        <button onclick="addToCart(${product.id})">Add to Cart</button>
+            <h3>${product.name}</h3>
+            <p>Price: $${product.price} - (${getProductQuantity(product.id)})</p>
+            <button onclick="addToCart(${product.id})">+</button>
         `;
         productList.appendChild(item);
     });
@@ -57,6 +63,7 @@ function filterProducts(categoryId) {
 //Function to add a product to the cart
 function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
+    selectedProduct.quantity += 1; //Increase the quantity by 1
 
     //Pushing the selected product to the cart
     cartItems.push(selectedProduct);
@@ -67,6 +74,7 @@ function viewCart() {
     window.location.href = 'my-cart.html';
 }
 
+//Function to redirect to main page if the user is on my-cart page
 function redirectToMainPage() {
     window.location.href = 'index.html';
 }
