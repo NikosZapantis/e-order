@@ -70,17 +70,14 @@ function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
 
     // Checking if the product is already in the cart
-    const isInCart = cartItems.some(item => item.id === selectedProduct.id);
+    const existingCartItem = cartItems.find(item => item.id === selectedProduct.id);
 
-    if (!isInCart) {
-        // Increase the quantity by 1
-        selectedProduct.quantity++;
-
-        // Push the selected product to the cart
-        cartItems.push(selectedProduct);
+    if (!existingCartItem) {
+    // If the product does not exist in the cart, add it with a quantity of 1
+    cartItems.push({ ...selectedProduct, quantity: 1 });
     } else {
-        // If the product already exists in the cart, just increase the quantity
-        selectedProduct.quantity++;
+    // If the product already exists in the cart, increase its quantity by 1
+    existingCartItem.quantity++;
     }
 
     // Saving the updated cartItems array to localStorage
@@ -89,24 +86,21 @@ function addToCart(productId) {
     // Updating the quantity displayed in the HTML
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
-        quantityElement.textContent = selectedProduct.quantity;
+    quantityElement.textContent = getProductQuantity(productId);
     }
 }
-
+  
 // Function to remove a product from the cart
 function removeFromCart(productId) {
-    const selectedProduct = products.find(product => product.id === productId);
+    const existingCartItem = cartItems.find(item => item.id === productId);
 
-    // Finding the index of the selected product in the cart
-    const cartIndex = cartItems.findIndex(item => item.id === selectedProduct.id);
-
-    if (cartIndex !== -1) {
+    if (existingCartItem) {
         // Decrease the quantity by 1
-        selectedProduct.quantity--;
+        existingCartItem.quantity--;
 
-        if (selectedProduct.quantity === 0) {
-        // Remove the product from the cart if quantity reaches 0
-        cartItems.splice(cartIndex, 1);
+        if (existingCartItem.quantity === 0) {
+        // If the quantity reaches 0, remove the product from the cart
+        cartItems = cartItems.filter(item => item.id !== productId);
         }
     }
 
@@ -116,7 +110,7 @@ function removeFromCart(productId) {
     // Updating the quantity displayed in the HTML
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
-        quantityElement.textContent = selectedProduct.quantity;
+        quantityElement.textContent = getProductQuantity(productId);
     }
 }
 
