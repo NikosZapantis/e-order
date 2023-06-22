@@ -11,9 +11,12 @@
     <button onclick="redirectToMainPage()">Back to Home</button>
     <ul id="cart-items"></ul>
 
+    <!-- <button onclick="convertCartListToArray()">Convert to Array</button>
+    <button onclick="convertCartListToCSV()">Convert to CSV</button> -->
+    <button onclick="convertCartListToExcel()">Convert to Excel</button>
+
     <script src="/src/e-order.js"></script>
     <script>
-        
         function displayCartItems() {
             const cartItemsList = document.getElementById('cart-items');
             cartItemsList.innerHTML = '';   // Clearing existing cart items
@@ -24,7 +27,36 @@
                 cartItemsList.appendChild(listItem);
             });
         }
+
+        //Converting Cart List into an array
+        // function convertCartListToArray() {
+        //     const cartListArray = cartItems.map(item => [item.name, item.quantity]);
+        //     console.log(cartListArray);
+        // }
         
+        //Converting Cart List into a csv file
+        // function convertCartListToCSV() {
+        //     const csvContent = cartItems.map(item => `${item.name},${item.quantity}`).join('\n');
+        //     const downloadLink = createDownloadLink(csvContent, 'cart-list.csv');
+        //     downloadLink.click();
+        // }
+        
+        //Converting Cart List into excel file
+        function convertCartListToExcel() {
+            const csvContent = cartItems.map(item => `${item.name},${item.quantity}`).join('\n');
+            const excelContent = `data:text/csv;charset=utf-8,\uFEFF${encodeURIComponent(csvContent)}`;
+            const downloadLink = createDownloadLink(excelContent, 'cart-list.csv');
+            downloadLink.click();
+        }
+
+        //Creating download link
+        function createDownloadLink(content, filename) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = content;
+            downloadLink.download = filename;
+            return downloadLink;
+        }
+
         // Calling displayCartItems() when the my-cart.html loads
         window.addEventListener('DOMContentLoaded', displayCartItems);
     </script>

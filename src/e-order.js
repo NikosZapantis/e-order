@@ -89,7 +89,7 @@ function addToCart(productId) {
     quantityElement.textContent = getProductQuantity(productId);
     }
 }
-  
+
 // Function to remove a product from the cart
 function removeFromCart(productId) {
     const existingCartItem = cartItems.find(item => item.id === productId);
