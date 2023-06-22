@@ -124,5 +124,11 @@ function redirectToMainPage() {
     window.location.href = 'index.html';
 }
 
+// Function to clear cart
+function clearCart() {
+    localStorage.removeItem('cartItems');
+    cartItems = [];
+}
+
 // Displaying the categories
 displayCategories();
