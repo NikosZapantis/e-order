@@ -18,7 +18,7 @@ body {
 }
 
 footer {
-    background-color: rgb(173, 175, 17);
+    background-color: #adaf11;
     color: black;
     padding: 0px;
     margin: auto;
@@ -35,7 +35,7 @@ footer {
     border: 2px solid black;
     border-radius: 15px;
     background-color: #3ab813;
-    padding: 7px;
+    padding: 6px;
 }
 
 #my-cart:hover {
@@ -48,5 +48,19 @@ footer {
 }
 
 #view-cart-button:hover {
+    cursor: pointer;
+}
+
+#clear-cart-button {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #adaf11;
+    transform: translate(-50%, -50%);
+}
+
+#clear-cart-button:hover {
     cursor: pointer;
 }
