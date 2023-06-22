@@ -16,16 +16,16 @@
         
         function displayCartItems() {
             const cartItemsList = document.getElementById('cart-items');
-            cartItemsList.innerHTML = '';   //Clearing existing cart items
+            cartItemsList.innerHTML = '';   // Clearing existing cart items
 
             cartItems.forEach(item => {
                 const listItem = document.createElement('li');
-                listItem = '${item.name} - Quantity: ${item.quantity}';
+                listItem.textContent = `${item.name} - Quantity: ${item.quantity}`;
                 cartItemsList.appendChild(listItem);
             });
         }
         
-        //Calling displayCartItems() when the my-cart.html loads
+        // Calling displayCartItems() when the my-cart.html loads
         window.addEventListener('DOMContentLoaded', displayCartItems);
     </script>
 </body>

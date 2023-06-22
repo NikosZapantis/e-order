@@ -16,8 +16,8 @@ const products = [
     { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
 ];
 
-// Define the cartItems array
-let cartItems = [];
+// Initializing cartItems array from localStorage, or set it to an empty array
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
 // Function that creates the categories and displays them
 function displayCategories() {
@@ -83,6 +83,9 @@ function addToCart(productId) {
         selectedProduct.quantity++;
     }
 
+    // Saving the updated cartItems array to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
     // Updating the quantity displayed in the HTML
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
@@ -106,6 +109,9 @@ function removeFromCart(productId) {
         cartItems.splice(cartIndex, 1);
         }
     }
+
+    // Saving the updated cartItems array to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
     // Updating the quantity displayed in the HTML
     const quantityElement = document.getElementById(`quantity-${productId}`);
