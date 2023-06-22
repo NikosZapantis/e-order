@@ -16,6 +16,9 @@ const products = [
     { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
 ];
 
+// Define the cartItems array
+let cartItems = [];
+
 //Function that creates the categories and displaying them
 function displayCategories() {
     const categoryList = document.getElementById('category-list');
@@ -52,9 +55,11 @@ function filterProducts(categoryId) {
     filteredProducts.forEach(product => {
         const item = document.createElement('div');
         item.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>Price: $${product.price} - (${getProductQuantity(product.id)})</p>
-            <button onclick="addToCart(${product.id})">+</button>
+            <h3>${product.name} (Price: $${product.price}) / 
+                <button class="quantity-btn" onclick="addToCart(${product.id})">+</button> 
+                ${getProductQuantity(product.id)} 
+                <button class="quantity-btn" onclick="removeFromCart(${product.id})">-</button>
+            </h3>
         `;
         productList.appendChild(item);
     });
@@ -63,10 +68,34 @@ function filterProducts(categoryId) {
 //Function to add a product to the cart
 function addToCart(productId) {
     const selectedProduct = products.find(product => product.id === productId);
-    selectedProduct.quantity += 1; //Increase the quantity by 1
 
-    //Pushing the selected product to the cart
-    cartItems.push(selectedProduct);
+    //Checking if product is already in the cart
+    const isInCart = cartItems.some(item => item.id == selectedProduct.id);
+
+    if(!isInCart) { //if the product doesnt exist in the cart I push it and increase the quantity index
+        selectedProduct.quantity++;
+
+        cartItems.push(selectedProduct);
+    }else { //If exist then I just increase the quantity index
+        selectedProduct.quantity++;
+    }
+}
+
+//Function to remove a product of the cart
+function removeFromCart(productId) {
+    const selectedProduct = products.find(product => product.id == productId);
+
+    //Finding the index of the selected product in the cart
+    const cartIndex = cartItems.findIndex(item => item.id == selectedProduct.id);
+
+    if(cartIndex !== -1) {
+        //Decreasing the quantity index by 1
+        selectedProduct.quantity--;
+
+        if(selectedProduct.quantity === 0) {
+            cartItems.splice(cartIndex, 1);
+        }
+    }
 }
 
 //Function to view the cart page
