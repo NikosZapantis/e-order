@@ -8,12 +8,15 @@
 </head>
 <body>
     <h1>My Cart</h1>
+    <button id="clear-cart-button" onclick="clearCart()">
+        Clear My Cart
+    </button>
     <button onclick="redirectToMainPage()">Back to Home</button>
     <ul id="cart-items"></ul>
 
     <!-- <button onclick="convertCartListToArray()">Convert to Array</button>
     <button onclick="convertCartListToCSV()">Convert to CSV</button> -->
-    <button onclick="convertCartListToExcel()">Convert to Excel</button>
+    <button onclick="convertCartListToExcel()">Generate Excel file</button>
 
     <script src="/src/e-order.js"></script>
     <script>

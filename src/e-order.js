@@ -4,7 +4,7 @@ const categories = [
     { id: 2, name: 'Category 2' },
     { id: 3, name: 'Category 3' },
     { id: 4, name: 'Category 4' },
-    { id: 5, name: 'Category 5' },
+    { id: 5, name: 'Category 5' }
 ];
 
 //Products array
@@ -13,7 +13,7 @@ const products = [
     { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
     { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
     { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
-    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
+    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 }
 ];
 
 // Initializing cartItems array from localStorage, or set it to an empty array
@@ -56,9 +56,9 @@ function filterProducts(categoryId) {
         const item = document.createElement('div');
         item.innerHTML = `
         <h3>${product.name} (Price: $${product.price}) / 
-            <button class="quantity-btn" onclick="addToCart(${product.id})">+</button> 
-            <span id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
             <button class="quantity-btn" onclick="removeFromCart(${product.id})">-</button>
+            <span id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+            <button class="quantity-btn" onclick="addToCart(${product.id})">+</button>
         </h3>
         `;
         productList.appendChild(item);
@@ -86,7 +86,7 @@ function addToCart(productId) {
     // Updating the quantity displayed in the HTML
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
-    quantityElement.textContent = getProductQuantity(productId);
+        quantityElement.textContent = getProductQuantity(productId);
     }
 }
 
@@ -128,6 +128,7 @@ function redirectToMainPage() {
 function clearCart() {
     localStorage.removeItem('cartItems');
     cartItems = [];
+    location.reload();
 }
 
 // Displaying the categories
