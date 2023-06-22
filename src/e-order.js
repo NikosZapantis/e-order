@@ -57,7 +57,7 @@ function filterProducts(categoryId) {
         item.innerHTML = `
         <h3>${product.name} (Price: $${product.price}) / 
             <button class="quantity-btn" onclick="addToCart(${product.id})">+</button> 
-            ${getProductQuantity(product.id)} 
+            <span id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
             <button class="quantity-btn" onclick="removeFromCart(${product.id})">-</button>
         </h3>
         `;
@@ -82,6 +82,12 @@ function addToCart(productId) {
         // If the product already exists in the cart, just increase the quantity
         selectedProduct.quantity++;
     }
+
+    // Updating the quantity displayed in the HTML
+    const quantityElement = document.getElementById(`quantity-${productId}`);
+    if (quantityElement) {
+        quantityElement.textContent = selectedProduct.quantity;
+    }
 }
 
 // Function to remove a product from the cart
@@ -99,6 +105,12 @@ function removeFromCart(productId) {
         // Remove the product from the cart if quantity reaches 0
         cartItems.splice(cartIndex, 1);
         }
+    }
+
+    // Updating the quantity displayed in the HTML
+    const quantityElement = document.getElementById(`quantity-${productId}`);
+    if (quantityElement) {
+        quantityElement.textContent = selectedProduct.quantity;
     }
 }
 
