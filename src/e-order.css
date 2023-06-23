@@ -18,7 +18,6 @@ body {
 }
 
 footer {
-    background-color: #adaf11;
     color: black;
     padding: 0px;
     margin: auto;
@@ -26,6 +25,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    background-image: linear-gradient(45deg, #e253e2, #28c9e8);
 }
 
 #my-cart {
@@ -61,10 +61,14 @@ footer {
     border-radius: 8px;
     background-color: #00FFFF;
     transform: translate(-50%, -50%);
+    background-image: linear-gradient(45deg, #e253e2, #28c9e8);
+    transition: background-color 0.3s ease;
 }
 
 #clear-cart-button:hover {
     cursor: pointer;
+    background-color: #B22222;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 #return-to-main {
@@ -75,12 +79,17 @@ footer {
     border-radius: 10px;
     width: 15%;
     height: 4%;
-    background-color: #3ab813;
+    background-color: #e76f0a;
     padding: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #return-to-main:hover {
     cursor: pointer;
+    background-color: transparent;
+    color: #e76f0a;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .quantityBtnRemove, .quantityBtnAdd {
@@ -124,5 +133,5 @@ h3 {
 }
 
 h4 {
-    font-size: 20px;
+    font-size: 15px;
 }
