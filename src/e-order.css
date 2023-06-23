@@ -166,3 +166,45 @@ h3 {
 h4 {
     font-size: 15px;
 }
+
+@keyframes popUpAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 0;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+#downloadPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border: 2px solid;
+    border-radius: 50%;
+    border-color: #4CAF50;
+    background-color: transparent;
+    color: #4CAF50;
+    font-size: 48px;
+    flex-direction: column;
+    text-align: center;
+    animation: popUpAnimation 1s ease-in-out;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+#downloadPopup p {
+    margin-top: 10px;
+    font-size: 18px;
+}
