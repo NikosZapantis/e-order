@@ -13,7 +13,29 @@ const products = [
     { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
     { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
     { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
-    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 }
+    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
+    // 
+    { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1 },
+    { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2 },
+    { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1 },
+    { id: 9, name: 'Product 9', price: 15, quantity: 0, categoryId: 3 },
+    { id: 10, name: 'Product 10', price: 25, quantity: 0, categoryId: 5 },
+    { id: 11, name: 'Product 11', price: 10, quantity: 0, categoryId: 1 },
+    { id: 12, name: 'Product 12', price: 20, quantity: 0, categoryId: 2 },
+    { id: 13, name: 'Product 13', price: 30, quantity: 0, categoryId: 1 },
+    { id: 14, name: 'Product 14', price: 15, quantity: 0, categoryId: 3 },
+    { id: 15, name: 'Product 15', price: 25, quantity: 0, categoryId: 5 },
+    { id: 16, name: 'Product 16', price: 25, quantity: 0, categoryId: 5 },
+    { id: 17, name: 'Product 17', price: 10, quantity: 0, categoryId: 1 },
+    { id: 18, name: 'Product 18', price: 20, quantity: 0, categoryId: 2 },
+    { id: 19, name: 'Product 19', price: 30, quantity: 0, categoryId: 1 },
+    { id: 20, name: 'Product 20', price: 15, quantity: 0, categoryId: 3 },
+    { id: 21, name: 'Product 21', price: 25, quantity: 0, categoryId: 5 },
+    { id: 22, name: 'Product 22', price: 25, quantity: 0, categoryId: 5 },
+    { id: 23, name: 'Product 23', price: 10, quantity: 0, categoryId: 1 },
+    { id: 24, name: 'Product 24', price: 20, quantity: 0, categoryId: 2 },
+    { id: 25, name: 'Product 25', price: 30, quantity: 0, categoryId: 1 },
+    { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3 }
 ];
 
 // Initializing cartItems array from localStorage, or set it to an empty array

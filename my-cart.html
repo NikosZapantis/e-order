@@ -22,13 +22,23 @@
             const cartItemsList = document.getElementById('cart-items');
             cartItemsList.innerHTML = '';   // Clearing existing cart items
 
+            let listItemFormat = '';
+            let ItemCounter = 0;
+
             cartItems.forEach(item => {
-                const listItem = document.createElement('li');
-                const itemText = document.createElement('h4');
-                itemText.textContent = `${item.name} | Quantity: ${item.quantity}`;
-                listItem.appendChild(itemText);
-                cartItemsList.appendChild(listItem);
+                // const listItem = document.createElement('li');
+                // const itemText = document.createElement('h4');
+                // itemText.textContent = `${item.name} | Quantity: ${item.quantity}`;
+                // listItem.appendChild(itemText);
+                // cartItemsList.appendChild(listItem);
+                if(ItemCounter % 4 === 0) {
+                    listItemFormat += '<br>';
+                }
+                listItemFormat += `<li>${item.name} | Quantity: ${item.quantity}</li>`;
+                ItemCounter++;
             });
+
+            cartItemsList.innerHTML = listItemFormat;
         }
         
         //Converting Cart List into excel file
