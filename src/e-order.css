@@ -64,3 +64,31 @@ footer {
 #clear-cart-button:hover {
     cursor: pointer;
 }
+
+.quantityBtnRemove, .quantityBtnAdd {
+    background-color: transparent;
+    border: 2px solid #adaf11;
+    border-radius: 5px;
+    color: #adaf11;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.quantityBtnAdd {
+    padding: 2px 5px;
+    position: fixed;
+    left: 25%;
+}
+
+.quantityBtnRemove {
+    padding: 3px 7px;
+    position: fixed;
+    left: 20%;
+}
+
+.quantityCounter {
+    padding: 3px 7px;
+    position: fixed;
+    left: 22.5%;
+}

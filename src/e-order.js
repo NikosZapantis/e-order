@@ -56,9 +56,9 @@ function filterProducts(categoryId) {
         const item = document.createElement('div');
         item.innerHTML = `
         <h3>${product.name} (Price: $${product.price}) / 
-            <button class="quantity-btn" onclick="removeFromCart(${product.id})">-</button>
-            <span id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
-            <button class="quantity-btn" onclick="addToCart(${product.id})">+</button>
+            <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
+            <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+            <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
         </h3>
         `;
         productList.appendChild(item);
