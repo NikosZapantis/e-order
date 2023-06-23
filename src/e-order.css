@@ -4,6 +4,13 @@ body {
     color: beige;
 }
 
+.gradient-text {
+    background: linear-gradient(45deg, #e253e2, #28c9e8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+}
+
 #welcome-message {
     position: fixed;
     top: 50%;
@@ -16,6 +23,7 @@ body {
     color: black;
     background-image: linear-gradient(45deg, #FF8000, #FFCC00);
     font-size: 24px;
+    animation: colorRotation 8s linear infinite;
 }
 
 #welcome-message:hover {
