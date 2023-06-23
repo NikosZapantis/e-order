@@ -11,7 +11,7 @@
     <button id="clear-cart-button" onclick="clearCart()">
         Clear My Cart
     </button>
-    <button onclick="redirectToMainPage()">Back to Home</button>
+    <button id="return-to-main" onclick="redirectToMainPage()">Back to Home</button>
     <ul id="cart-items"></ul>
 
     <!-- <button onclick="convertCartListToArray()">Convert to Array</button>
@@ -26,7 +26,9 @@
 
             cartItems.forEach(item => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `${item.name} - Quantity: ${item.quantity}`;
+                const itemText = document.createElement('h4');
+                itemText.textContent = `${item.name} | Quantity: ${item.quantity}`;
+                listItem.appendChild(itemText);
                 cartItemsList.appendChild(listItem);
             });
         }

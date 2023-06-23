@@ -40,6 +40,8 @@ footer {
 
 #my-cart:hover {
     cursor: pointer;
+    background-color: #191b28;
+    color: #3ab813; 
 }
 
 #view-cart-button {
@@ -57,11 +59,27 @@ footer {
     left: 50%;
     border: 2px solid black;
     border-radius: 8px;
-    background-color: #adaf11;
+    background-color: #00FFFF;
     transform: translate(-50%, -50%);
 }
 
 #clear-cart-button:hover {
+    cursor: pointer;
+}
+
+#return-to-main {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 15%;
+    height: 4%;
+    background-color: #3ab813;
+    padding: 6px;
+}
+
+#return-to-main:hover {
     cursor: pointer;
 }
 
@@ -73,6 +91,13 @@ footer {
     font-size: 20px;
     cursor: pointer;
     outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+.quantityBtnRemove:hover, .quantityBtnAdd:hover {
+    background-color: #adaf11;
+    color: #191b28;
+    transition: 0.2s ease-in-out;
 }
 
 .quantityBtnAdd {
@@ -96,4 +121,8 @@ footer {
 h3 {
     text-align: center;
     width: 20%;
+}
+
+h4 {
+    font-size: 20px;
 }
