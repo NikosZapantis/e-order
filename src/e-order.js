@@ -66,13 +66,10 @@ function getProductQuantity(productId) {
 // Function to filter and display products by category
 function filterProducts(categoryId) {
     const productList = document.getElementById('product-list');
-    const welcomeMessage = document.getElementById('welcome-message');
 
     // Clearing existing content
     productList.innerHTML = '';
 
-    // Hide the welcome message
-    welcomeMessage.style.display = 'none';
 
     // Filtering products by category
     const filteredProducts = products.filter(product => product.categoryId === categoryId);
