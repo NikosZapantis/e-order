@@ -55,7 +55,7 @@ function filterProducts(categoryId) {
     filteredProducts.forEach(product => {
         const item = document.createElement('div');
         item.innerHTML = `
-        <h3>${product.name} (Price: $${product.price}) / 
+        <h3>${product.name} 
             <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
             <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
             <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>

@@ -92,3 +92,8 @@ footer {
     position: fixed;
     left: 22.5%;
 }
+
+h3 {
+    text-align: center;
+    width: 15%;
+}
