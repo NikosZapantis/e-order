@@ -26,6 +26,15 @@ body {
     background-image: linear-gradient(45deg, #FF8000, #FFCC00);
     background-size: 200% auto;
     animation: colorRotation 8s linear infinite;
+    border: none;
+    outline: none;
+    box-shadow: 0px 20px 21px 4px rgba(0, 0, 0, 0.5);
+}
+
+#category-list button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
 }
 
 @keyframes colorRotation {
