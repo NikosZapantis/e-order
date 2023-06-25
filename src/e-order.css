@@ -5,6 +5,7 @@ body {
 }
 
 .gradient-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: linear-gradient(45deg, #e253e2, #28c9e8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -81,6 +82,8 @@ footer {
 }
 
 #clear-cart-button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
     position: fixed;
     top: 5%;
     left: 50%;
@@ -143,9 +146,9 @@ footer {
 #activeProducts {
     text-align: center;
     position: fixed;
-    top: 4.9%;
-    left: 92%;
-    width: 2%;
+    top: 4.8%;
+    left: 90%;
+    width: 5%;
     height: 2%;
     border: 2px solid black;
     border-radius: 13px;
