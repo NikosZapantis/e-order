@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My cart</title>
+    <link rel="stylesheet" type="text/css" href="../e-order.css">
+    <link rel="icon" type="image/png" href="/images/my-cart.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <h1 class="gradient-text">My Cart</h1>
+    <button id="clear-cart-button" onclick="clearCart()">
+        Clear My Cart
+    </button>
+    <button id="return-to-main" onclick="redirectToMainPage()">
+        <i class="fas fa-home"></i>
+    </button>
+    
+    <ul id="cart-items"></ul>
+
+    <div id="downloadPopup">
+        <i class="fas fa-check"></i>
+        <p>Your order is ready!</p>
+    </div>
+
+    <button id="generateExcelBtn" onclick="convertCartListToExcel()">Generate Excel</button>
+
+    <script src="../e-order.js"></script>
+    <script src="../js_extensions/my-cart.js"></script>
+
+    <footer>
+        <p>&copy; 2023 E-Paraggeliamou Application</p>
+    </footer>
+</body>
+</html>

@@ -189,17 +189,17 @@ function removeFromCart(productId) {
 
 // Function to view the cart page
 function viewCart() {
-    window.location.href = 'my-cart.html';
+    window.location.href = '/src/html_extensions/my-cart.html';
 }
 
 // Function that user can select the active products
 function viewActiveProducts() {
-    window.location.href = 'active-products.html';
+    window.location.href = '/src/html_extensions/active-products.html';
 }
 
 // Function to redirect to the main page if the user is on the my-cart page
 function redirectToMainPage() {
-    window.location.href = 'index.html';
+    window.location.href = '../../index.html';
 }
 
 // Function to clear cart
