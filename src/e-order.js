@@ -63,13 +63,39 @@ function getProductQuantity(productId) {
     return selectedProduct ? selectedProduct.quantity : 0;
 }
 
+// Function to handle category button clicks
+function handleCategoryFocus(event) {
+    const clickedButton = event.target;
+
+    // Check if a category button was clicked
+    if (clickedButton.tagName === 'BUTTON') {
+        const categoryId = parseInt(clickedButton.dataset.categoryId);
+
+        // // Filter and display products by category
+        // filterProducts(categoryId);
+
+        // Add 'selected' class to the clicked category button
+        const categoryButtons = document.querySelectorAll('#category-list button');
+        categoryButtons.forEach(button => {
+        if (button === clickedButton) {
+            button.classList.add('selected');
+        } else {
+            button.classList.remove('selected');
+        }
+        });
+    }
+}
+  
+// Add event listener to the category list container
+const categoryList = document.getElementById('category-list');
+categoryList.addEventListener('click', handleCategoryFocus);
+
 // Function to filter and display products by category
 function filterProducts(categoryId) {
     const productList = document.getElementById('product-list');
 
     // Clearing existing content
     productList.innerHTML = '';
-
 
     // Filtering products by category
     const filteredProducts = products.filter(product => product.categoryId === categoryId);
