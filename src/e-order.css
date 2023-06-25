@@ -19,6 +19,7 @@ body {
 }
 
 #category-list button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
     flex: 1;
     margin-right: 10px;
@@ -46,6 +47,7 @@ body {
 }
 
 footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: black;
     padding: 0px;
     margin: auto;
@@ -125,6 +127,7 @@ footer {
 }
 
 #generateExcelBtn {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: fixed;
     bottom: 10%;
     left: 43%;
@@ -210,12 +213,18 @@ footer {
 }
 
 h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     width: 20%;
 }
 
 h4 {
+    
     font-size: 15px;
+}
+
+li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @keyframes popUpAnimation {
