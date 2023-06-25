@@ -11,18 +11,20 @@
     <button id="return-to-main" onclick="redirectToMainPage()">
         <i class="fas fa-home"></i>
     </button>
-    <h1>Active Products</h1>
+    <h1 class="gradient-text">Active Products</h1>
 
     <h2>All Products</h2>
     <div id="all-products">
         <form id="product-form">
             <div id="product-list"></div>
-            <button type="submit">Save Changes</button>
         </form>
     </div>
 
     <script src="/src/e-order.js"></script>
     <script>
+        // Retrieve active products from localStorage, or set it to an empty array
+        let activeProducts = JSON.parse(localStorage.getItem('activeProducts')) || [];
+
         // Function to display all products
         function displayAllProducts() {
             const productList = document.getElementById('product-list');
@@ -37,7 +39,7 @@
 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.checked = activeProducts.some(activeProduct => activeProduct.id === product.id);
+                checkbox.checked = ActiveProducts.some(activeProduct => activeProduct.id === product.id); // Check if product is present in ActiveProducts
                 checkbox.addEventListener('change', () => {
                     toggleProductActiveState(product.id, checkbox.checked);
                 });
@@ -64,6 +66,9 @@
                     activeProducts.splice(index, 1);
                 }
             }
+
+            // Save the updated active products array to localStorage
+            localStorage.setItem('activeProducts', JSON.stringify(activeProducts));
         }
 
         // Event listener for the product form submission
@@ -77,6 +82,10 @@
         // Display all products
         displayAllProducts();
     </script>
+
+    <footer>
+        <p>&copy; 2023 E-Paraggelia Application</p>
+    </footer>
 </body>
 
 </html>

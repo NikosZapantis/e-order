@@ -14,7 +14,6 @@ const AllProducts = [
     { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
     { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
     { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
-    // 
     { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1 },
     { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2 },
     { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1 },
@@ -39,7 +38,23 @@ const AllProducts = [
 ];
 
 //Active Products array
-const products = AllProducts.slice();
+const ActiveProducts = [
+    { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1 },
+    { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
+    { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
+    { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
+    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
+    { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1 },
+    { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2 },
+    { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1 },
+    { id: 9, name: 'Product 9', price: 15, quantity: 0, categoryId: 3 },
+    { id: 10, name: 'Product 10', price: 25, quantity: 0, categoryId: 5 },
+    { id: 11, name: 'Product 11', price: 10, quantity: 0, categoryId: 1 },
+    { id: 12, name: 'Product 12', price: 20, quantity: 0, categoryId: 2 },
+    { id: 13, name: 'Product 13', price: 30, quantity: 0, categoryId: 1 },
+    { id: 14, name: 'Product 14', price: 15, quantity: 0, categoryId: 3 },
+    { id: 15, name: 'Product 15', price: 25, quantity: 0, categoryId: 5 },
+];
 
 // Initializing cartItems array from localStorage, or set it to an empty array
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -101,7 +116,7 @@ function filterProducts(categoryId) {
     productList.innerHTML = '';
 
     // Filtering products by category
-    const filteredProducts = products.filter(product => product.categoryId === categoryId);
+    const filteredProducts = ActiveProducts.filter(product => product.categoryId === categoryId);
 
     // Loop through filtered products and create HTML elements
     filteredProducts.forEach(product => {
@@ -119,7 +134,7 @@ function filterProducts(categoryId) {
 
 // Function to add a product to the cart
 function addToCart(productId) {
-    const selectedProduct = products.find(product => product.id === productId);
+    const selectedProduct = ActiveProducts.find(product => product.id === productId);
 
     // Checking if the product is already in the cart
     const existingCartItem = cartItems.find(item => item.id === selectedProduct.id);
