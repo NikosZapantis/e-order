@@ -7,8 +7,8 @@ const categories = [
     { id: 5, name: 'Category 5' }
 ];
 
-//Products array
-const products = [
+//All Products array
+const AllProducts = [
     { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1 },
     { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
     { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
@@ -37,6 +37,9 @@ const products = [
     { id: 25, name: 'Product 25', price: 30, quantity: 0, categoryId: 1 },
     { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3 }
 ];
+
+//Active Products array
+const products = AllProducts.slice();
 
 // Initializing cartItems array from localStorage, or set it to an empty array
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -172,6 +175,11 @@ function removeFromCart(productId) {
 // Function to view the cart page
 function viewCart() {
     window.location.href = 'my-cart.html';
+}
+
+// Function that user can select the active products
+function viewActiveProducts() {
+    window.location.href = 'active-products.html';
 }
 
 // Function to redirect to the main page if the user is on the my-cart page
