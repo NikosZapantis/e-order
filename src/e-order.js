@@ -63,7 +63,7 @@ function getProductQuantity(productId) {
     return selectedProduct ? selectedProduct.quantity : 0;
 }
 
-// Function to handle category button clicks
+// Function to handle category focus
 function handleCategoryFocus(event) {
     const clickedButton = event.target;
 
@@ -85,8 +85,8 @@ function handleCategoryFocus(event) {
         });
     }
 }
-  
-// Add event listener to the category list container
+ 
+// Add event listener to the category list container so I can declare which one to focus
 const categoryList = document.getElementById('category-list');
 categoryList.addEventListener('click', handleCategoryFocus);
 
@@ -137,6 +137,9 @@ function addToCart(productId) {
     if (quantityElement) {
         quantityElement.textContent = getProductQuantity(productId);
     }
+
+    // Updating cart count
+    UpdateCartCount();
 }
 
 // Function to remove a product from the cart
@@ -161,6 +164,9 @@ function removeFromCart(productId) {
     if (quantityElement) {
         quantityElement.textContent = getProductQuantity(productId);
     }
+
+    // Updating cart count
+    UpdateCartCount();
 }
 
 // Function to view the cart page
@@ -180,5 +186,18 @@ function clearCart() {
     location.reload();
 }
 
+// Function to update the cart-count
+function UpdateCartCount() {
+    const cartCountElement = document.getElementById('cart-count');
+
+    if(cartCountElement) {
+        const totalProudcts = cartItems.length;
+        cartCountElement.textContent = totalProudcts;
+    }
+}
+
 // Displaying the categories
 displayCategories();
+
+// Updating cart count
+UpdateCartCount();
