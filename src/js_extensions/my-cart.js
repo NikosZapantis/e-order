@@ -24,6 +24,9 @@ function displayCartItems() {
     });
 
     cartItemsList.innerHTML = listItemFormat;
+
+    //Calling calculateCartItems to update the numbers
+    calculateCartItems();
 }
 
 //Converting Cart List into excel file {With Borders}
@@ -91,6 +94,27 @@ function createDownloadLink(content, filename) {    //Creating download link
     downloadLink.href = content;
     downloadLink.download = filename;
     return downloadLink;
+}
+
+//Function to display the total products and the unique ones
+function calculateCartItems() {
+    let totalProducts = 0;
+    let uniqueProducts = new Set();
+
+    //Calculating for all the items
+    cartItems.forEach(item => {
+        totalProducts += item.quantity;
+
+        uniqueProducts.add(item.id);
+    });
+
+    //Displaying total products
+    const totalProductsElement = document.getElementById('total-products');
+    totalProductsElement.textContent = `Total Products: ${totalProducts}`;
+
+    //Displaying unique products
+    const uniqueProductsElement = document.getElementById('unique-products');
+    uniqueProductsElement.textContent = `Unique Products: ${Array.from(uniqueProducts).length}`;
 }
 
 // Calling displayCartItems() when the my-cart.html loads
