@@ -10,7 +10,7 @@ function displayAllProducts() {
 
     // Loop through all products
     AllProducts.forEach(product => {
-        const listItem = document.createElement('li'); // Create a <li> element
+        const listItem = document.createElement('li');
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -24,7 +24,7 @@ function displayAllProducts() {
         label.textContent = " " + product.name;
         listItem.appendChild(label);
 
-        productList.appendChild(listItem); // Append the <li> to the <ul> or <ol>
+        productList.appendChild(listItem);
     });
 }
 
@@ -35,12 +35,14 @@ function toggleProductActiveState(productId, isActive) {
         if (isActive) {
             // Change the status to 'active' in ActiveProducts
             ActiveProducts[productIndex].status = 'active';
-            // Find the corresponding product in AllProducts and add it to activeProducts
+
+            // Find the specific product in AllProducts and add it to activeProducts
             const product = AllProducts.find(product => product.id === productId);
             activeProducts.push(product);
         } else {
             // Change the status to 'disabled' in ActiveProducts
             ActiveProducts[productIndex].status = 'disabled';
+
             // Remove the corresponding product from activeProducts
             const index = activeProducts.findIndex(product => product.id === productId);
             if (index !== -1) {
