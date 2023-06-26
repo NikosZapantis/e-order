@@ -53,7 +53,14 @@ function convertCartListToExcel() {
     const downloadLink = createDownloadLink(url, fileName);
     downloadLink.style.display = 'none';
     document.body.appendChild(downloadLink);
-    
+
+    // Auto-Copying the final border in the user's clipboard 
+    navigator.clipboard.write([
+        new ClipboardItem({
+            'text/html': new Blob([htmlContent], {type: 'text/html'})
+        })
+    ]);
+
     downloadLink.click();
     
     // Show download popup
