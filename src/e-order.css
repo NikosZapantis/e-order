@@ -312,12 +312,12 @@ li {
     margin-bottom: 5px;
 }
 
-#notification .success {
+#notification .added {
     color: green;
     margin-right: 5px;
 }
 
-#notification .failure {
+#notification .removed {
     color: red;
     margin-right: 5px;
 }

@@ -193,7 +193,7 @@ function removeFromCart(productId) {
 }
 
 // Function to show notification
-function showNotification(message, success) {
+function showNotification(message, isAdd) {
     const notificationElement = document.getElementById('notification');
 
     // Creating a new span element for the notification
@@ -201,11 +201,11 @@ function showNotification(message, success) {
     notification.textContent = message;
 
     // Adding success or failure class based on success parameter
-    if (success) {
-        notification.classList.add('success');
+    if (isAdd) {
+        notification.classList.add('added');
         notification.innerHTML = '&#10004; ' + notification.innerHTML; // Add ✔ symbol
     } else {
-        notification.classList.add('failure');
+        notification.classList.add('removed');
         notification.innerHTML = '&#10008; ' + notification.innerHTML; // Add ❌ symbol
     }
 

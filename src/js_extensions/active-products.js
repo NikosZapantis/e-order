@@ -13,6 +13,10 @@ function displayAllProducts() {
         const item = document.createElement('div');
         item.className = 'product-item';
 
+        const label = document.createElement('label');
+        label.textContent = product.name;
+        item.appendChild(label);
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = ActiveProducts.some(activeProduct => activeProduct.id === product.id); // Check if product is present in ActiveProducts
@@ -20,10 +24,6 @@ function displayAllProducts() {
             toggleProductActiveState(product.id, checkbox.checked);
         });
         item.appendChild(checkbox);
-
-        const label = document.createElement('label');
-        label.textContent = product.name;
-        item.appendChild(label);
 
         productList.appendChild(item);
     });
