@@ -35,7 +35,14 @@ function convertCartListToExcel() {
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const year = currentDate.getFullYear();
-    const fileName = `Order_${day}-${month}-${year}.xls`;
+    const DefaultFileName = `Order_${day}-${month}-${year}.xls`;
+
+    // Getting the value from the custom file name input field
+    const CustomFileNameInput = document.getElementById('CustomFileNameInput');
+    const userProvidedFileName = CustomFileNameInput.value;
+
+    // Creating the filanem based on user input or providing the default (fileName)
+    const FinalFileName = userProvidedFileName.trim() !== '' ? userProvidedFileName : DefaultFileName;
     
     // Create an HTML table with borders
     let htmlContent = '<table border="1">';
@@ -50,7 +57,7 @@ function convertCartListToExcel() {
     
     // Create the download link
     const url = URL.createObjectURL(blob);
-    const downloadLink = createDownloadLink(url, fileName);
+    const downloadLink = createDownloadLink(url, FinalFileName);
     downloadLink.style.display = 'none';
     document.body.appendChild(downloadLink);
 
@@ -123,6 +130,17 @@ function calculateCartItems() {
     const uniqueProductsElement = document.getElementById('unique-products');
     uniqueProductsElement.textContent = `Unique Products: ${Array.from(uniqueProducts).length}`;
 }
+
+// Handling keydown events
+function handleKeyDown(event) {
+    if(event.key === "Enter") {
+        convertCartListToExcel();
+    }
+}
+
+// Adding event listener for the keydown on the CustomFileNameInput element
+const CustomFileNameInput = document.getElementById('CustomFileNameInput');
+CustomFileNameInput.addEventListener('keydown', handleKeyDown); 
 
 // Calling displayCartItems() when the my-cart.html loads
 window.addEventListener('DOMContentLoaded', displayCartItems);
