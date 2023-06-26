@@ -292,3 +292,32 @@ li {
     margin-top: 10px;
     font-size: 18px;
 }
+
+#notification {
+    position: fixed;
+    bottom: 15%;
+    right: 3%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    backdrop-filter: blur(25px);
+}
+
+#notification span {
+    margin-bottom: 5px;
+}
+
+#notification .success {
+    color: green;
+    margin-right: 5px;
+}
+
+#notification .failure {
+    color: red;
+    margin-right: 5px;
+}

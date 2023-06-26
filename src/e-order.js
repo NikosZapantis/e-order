@@ -140,11 +140,13 @@ function addToCart(productId) {
     const existingCartItem = cartItems.find(item => item.id === selectedProduct.id);
 
     if (!existingCartItem) {
-    // If the product does not exist in the cart, add it with a quantity of 1
-    cartItems.push({ ...selectedProduct, quantity: 1 });
+        // If the product does not exist in the cart, add it with a quantity of 1
+        cartItems.push({ ...selectedProduct, quantity: 1 });
+
+        showNotification(`${selectedProduct.name} added to the cart.`, true);
     } else {
-    // If the product already exists in the cart, increase its quantity by 1
-    existingCartItem.quantity++;
+        // If the product already exists in the cart, increase its quantity by 1
+        existingCartItem.quantity++;
     }
 
     // Saving the updated cartItems array to localStorage
@@ -169,8 +171,11 @@ function removeFromCart(productId) {
         existingCartItem.quantity--;
 
         if (existingCartItem.quantity === 0) {
-        // If the quantity reaches 0, remove the product from the cart
-        cartItems = cartItems.filter(item => item.id !== productId);
+            // If the quantity reaches 0, remove the product from the cart
+            cartItems = cartItems.filter(item => item.id !== productId);
+
+            const selectedProduct = ActiveProducts.find(product => product.id === productId);
+            showNotification(`${selectedProduct.name} removed from the cart.`, false);
         }
     }
 
@@ -185,6 +190,33 @@ function removeFromCart(productId) {
 
     // Updating cart count
     UpdateCartCount();
+}
+
+// Function to show notification
+function showNotification(message, success) {
+    const notificationElement = document.getElementById('notification');
+
+    // Creating a new span element for the notification
+    const notification = document.createElement('span');
+    notification.textContent = message;
+
+    // Adding success or failure class based on success parameter
+    if (success) {
+        notification.classList.add('success');
+        notification.innerHTML = '&#10004; ' + notification.innerHTML; // Add ✔ symbol
+    } else {
+        notification.classList.add('failure');
+        notification.innerHTML = '&#10008; ' + notification.innerHTML; // Add ❌ symbol
+    }
+
+
+    // Appending the notification to the notification element
+    notificationElement.appendChild(notification);
+
+    // Automatically remove the notification after 3 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 3500);
 }
 
 // Function to view the cart page
