@@ -10,12 +10,7 @@ function displayAllProducts() {
 
     // Loop through all products
     AllProducts.forEach(product => {
-        const item = document.createElement('div');
-        item.className = 'product-item';
-
-        const label = document.createElement('label');
-        label.textContent = product.name;
-        item.appendChild(label);
+        const listItem = document.createElement('li'); // Create a <li> element
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -23,9 +18,13 @@ function displayAllProducts() {
         checkbox.addEventListener('change', () => {
             toggleProductActiveState(product.id, checkbox.checked);
         });
-        item.appendChild(checkbox);
+        listItem.appendChild(checkbox);
 
-        productList.appendChild(item);
+        const label = document.createElement('label');
+        label.textContent = " " + product.name;
+        listItem.appendChild(label);
+
+        productList.appendChild(listItem); // Append the <li> to the <ul> or <ol>
     });
 }
 

@@ -36,10 +36,8 @@ const AllProducts = [
     { id: 25, name: 'Product 25', price: 30, quantity: 0, categoryId: 1, status: 'disabled' },
     { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3, status: 'disabled' }
 ];
-// Store all products in localStorage
-localStorage.setItem('AllProducts', JSON.stringify(AllProducts));
 
-//Active Products array
+//Built-in Active Products array
 const ActiveProducts = AllProducts.filter(product => product.status === 'active');
 // Store active products in localStorage
 localStorage.setItem('ActiveProducts', JSON.stringify(ActiveProducts));
