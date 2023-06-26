@@ -9,52 +9,41 @@ const categories = [
 
 //All Products array
 const AllProducts = [
-    { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1 },
-    { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
-    { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
-    { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
-    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
-    { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1 },
-    { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2 },
-    { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1 },
-    { id: 9, name: 'Product 9', price: 15, quantity: 0, categoryId: 3 },
-    { id: 10, name: 'Product 10', price: 25, quantity: 0, categoryId: 5 },
-    { id: 11, name: 'Product 11', price: 10, quantity: 0, categoryId: 1 },
-    { id: 12, name: 'Product 12', price: 20, quantity: 0, categoryId: 2 },
-    { id: 13, name: 'Product 13', price: 30, quantity: 0, categoryId: 1 },
-    { id: 14, name: 'Product 14', price: 15, quantity: 0, categoryId: 3 },
-    { id: 15, name: 'Product 15', price: 25, quantity: 0, categoryId: 5 },
-    { id: 16, name: 'Product 16', price: 25, quantity: 0, categoryId: 5 },
-    { id: 17, name: 'Product 17', price: 10, quantity: 0, categoryId: 1 },
-    { id: 18, name: 'Product 18', price: 20, quantity: 0, categoryId: 2 },
-    { id: 19, name: 'Product 19', price: 30, quantity: 0, categoryId: 1 },
-    { id: 20, name: 'Product 20', price: 15, quantity: 0, categoryId: 3 },
-    { id: 21, name: 'Product 21', price: 25, quantity: 0, categoryId: 5 },
-    { id: 22, name: 'Product 22', price: 25, quantity: 0, categoryId: 5 },
-    { id: 23, name: 'Product 23', price: 10, quantity: 0, categoryId: 1 },
-    { id: 24, name: 'Product 24', price: 20, quantity: 0, categoryId: 2 },
-    { id: 25, name: 'Product 25', price: 30, quantity: 0, categoryId: 1 },
-    { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3 }
+    { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2, status: 'active' },
+    { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3, status: 'active' },
+    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5, status: 'active' },
+    { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2, status: 'active' },
+    { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 9, name: 'Product 9', price: 15, quantity: 0, categoryId: 3, status: 'active' },
+    { id: 10, name: 'Product 10', price: 25, quantity: 0, categoryId: 5, status: 'active' },
+    { id: 11, name: 'Product 11', price: 10, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 12, name: 'Product 12', price: 20, quantity: 0, categoryId: 2, status: 'active' },
+    { id: 13, name: 'Product 13', price: 30, quantity: 0, categoryId: 1, status: 'active' },
+    { id: 14, name: 'Product 14', price: 15, quantity: 0, categoryId: 3, status: 'active' },
+    { id: 15, name: 'Product 15', price: 25, quantity: 0, categoryId: 5, status: 'active' },
+    { id: 16, name: 'Product 16', price: 25, quantity: 0, categoryId: 5, status: 'disabled' },
+    { id: 17, name: 'Product 17', price: 10, quantity: 0, categoryId: 1, status: 'disabled' },
+    { id: 18, name: 'Product 18', price: 20, quantity: 0, categoryId: 2, status: 'disabled' },
+    { id: 19, name: 'Product 19', price: 30, quantity: 0, categoryId: 1, status: 'disabled' },
+    { id: 20, name: 'Product 20', price: 15, quantity: 0, categoryId: 3, status: 'disabled' },
+    { id: 21, name: 'Product 21', price: 25, quantity: 0, categoryId: 5, status: 'disabled' },
+    { id: 22, name: 'Product 22', price: 25, quantity: 0, categoryId: 5, status: 'disabled' },
+    { id: 23, name: 'Product 23', price: 10, quantity: 0, categoryId: 1, status: 'disabled' },
+    { id: 24, name: 'Product 24', price: 20, quantity: 0, categoryId: 2, status: 'disabled' },
+    { id: 25, name: 'Product 25', price: 30, quantity: 0, categoryId: 1, status: 'disabled' },
+    { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3, status: 'disabled' }
 ];
+// Store all products in localStorage
+localStorage.setItem('AllProducts', JSON.stringify(AllProducts));
 
 //Active Products array
-const ActiveProducts = [
-    { id: 1, name: 'Product 1', price: 10, quantity: 0, categoryId: 1 },
-    { id: 2, name: 'Product 2', price: 20, quantity: 0, categoryId: 2 },
-    { id: 3, name: 'Product 3', price: 30, quantity: 0, categoryId: 1 },
-    { id: 4, name: 'Product 4', price: 15, quantity: 0, categoryId: 3 },
-    { id: 5, name: 'Product 5', price: 25, quantity: 0, categoryId: 5 },
-    { id: 6, name: 'Product 6', price: 10, quantity: 0, categoryId: 1 },
-    { id: 7, name: 'Product 7', price: 20, quantity: 0, categoryId: 2 },
-    { id: 8, name: 'Product 8', price: 30, quantity: 0, categoryId: 1 },
-    { id: 9, name: 'Product 9', price: 15, quantity: 0, categoryId: 3 },
-    { id: 10, name: 'Product 10', price: 25, quantity: 0, categoryId: 5 },
-    { id: 11, name: 'Product 11', price: 10, quantity: 0, categoryId: 1 },
-    { id: 12, name: 'Product 12', price: 20, quantity: 0, categoryId: 2 },
-    { id: 13, name: 'Product 13', price: 30, quantity: 0, categoryId: 1 },
-    { id: 14, name: 'Product 14', price: 15, quantity: 0, categoryId: 3 },
-    { id: 15, name: 'Product 15', price: 25, quantity: 0, categoryId: 5 },
-];
+const ActiveProducts = AllProducts.filter(product => product.status === 'active');
+// Store active products in localStorage
+localStorage.setItem('ActiveProducts', JSON.stringify(ActiveProducts));
+
 
 // Initializing cartItems array from localStorage, or set it to an empty array
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];

@@ -31,29 +31,30 @@ function displayAllProducts() {
 
 // Function to toggle the active state of a product
 function toggleProductActiveState(productId, isActive) {
-    if (isActive) {
-        // Add the product to the active products array
-        const product = AllProducts.find(product => product.id === productId);
-        activeProducts.push(product);
-    } else {
-        // Remove the product from the active products array
-        const index = activeProducts.findIndex(product => product.id === productId);
-        if (index !== -1) {
-            activeProducts.splice(index, 1);
+    const productIndex = ActiveProducts.findIndex(product => product.id === productId);
+    if (productIndex !== -1) {
+        if (isActive) {
+            // Change the status to 'active' in ActiveProducts
+            ActiveProducts[productIndex].status = 'active';
+            // Find the corresponding product in AllProducts and add it to activeProducts
+            const product = AllProducts.find(product => product.id === productId);
+            activeProducts.push(product);
+        } else {
+            // Change the status to 'disabled' in ActiveProducts
+            ActiveProducts[productIndex].status = 'disabled';
+            // Remove the corresponding product from activeProducts
+            const index = activeProducts.findIndex(product => product.id === productId);
+            if (index !== -1) {
+                activeProducts.splice(index, 1);
+            }
         }
+
+        // Save the updated active products array to localStorage
+        localStorage.setItem('ActiveProducts', JSON.stringify(ActiveProducts));
+        // Save the updated activeProducts array to localStorage
+        localStorage.setItem('activeProducts', JSON.stringify(activeProducts));
     }
-
-    // Save the updated active products array to localStorage
-    localStorage.setItem('activeProducts', JSON.stringify(activeProducts));
 }
-
-// Event listener for the product form submission
-const productForm = document.getElementById('product-form');
-productForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    // Handle the form submission, save the changes, or perform any desired action
-    console.log(activeProducts);
-});
 
 // Display all products
 displayAllProducts();
