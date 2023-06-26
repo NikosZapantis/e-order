@@ -37,12 +37,6 @@ const AllProducts = [
     { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3, status: 'disabled' }
 ];
 
-//Built-in Active Products array
-const ActiveProducts = AllProducts.filter(product => product.status === 'active');
-// Store active products in localStorage
-localStorage.setItem('ActiveProducts', JSON.stringify(ActiveProducts));
-
-
 // Initializing cartItems array from localStorage, or set it to an empty array
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -103,7 +97,7 @@ function filterProducts(categoryId) {
     productList.innerHTML = '';
 
     // Filtering products by category
-    const filteredProducts = ActiveProducts.filter(product => product.categoryId === categoryId);
+    const filteredProducts = AllProducts.filter(product => product.categoryId === categoryId && product.status === 'active');
 
     // Loop through filtered products and create HTML elements
     filteredProducts.forEach(product => {
