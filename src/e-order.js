@@ -37,6 +37,15 @@ const AllProducts = [
     { id: 26, name: 'Product 26', price: 15, quantity: 0, categoryId: 3, status: 'disabled' }
 ];
 
+// Check if the AllProducts array exists in localStorage
+let AllProductsArray = JSON.parse(localStorage.getItem('AllProducts'));
+
+// If AllProducts is null or undefined, initialize it with the products from the constant
+if (!AllProductsArray) {
+    AllProductsArray = [...AllProducts];
+    localStorage.setItem('AllProducts', JSON.stringify(AllProducts));
+}
+
 // Initializing cartItems array from localStorage, or set it to an empty array
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -96,26 +105,47 @@ function filterProducts(categoryId) {
     // Clearing existing content
     productList.innerHTML = '';
 
-    // Filtering products by category
-    const filteredProducts = AllProducts.filter(product => product.categoryId === categoryId && product.status === 'active');
+    // Checking if AllProducts array is empty in localStorage
+    const currentlyAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
 
-    // Loop through filtered products and create HTML elements
-    filteredProducts.forEach(product => {
-        const item = document.createElement('div');
-        item.innerHTML = `
-        <h3>${product.name} 
-            <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
-            <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
-            <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
-        </h3>
-        `;
-        productList.appendChild(item);
-    });
+    if (currentlyAllProducts && currentlyAllProducts.length > 0) {
+        // Filtering products by category and status 'active'
+        const filteredProducts = currentlyAllProducts.filter(product => product.categoryId === categoryId && product.status === 'active');
+
+        // Loop through filtered products and create HTML elements
+        filteredProducts.forEach(product => {
+            const item = document.createElement('div');
+            item.innerHTML = `
+                <h3>${product.name} 
+                    <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
+                    <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+                    <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
+                </h3>
+            `;
+            productList.appendChild(item);
+        });
+    } else {
+        // Filtering products from the AllProducts constant by category and status 'active'
+        const filteredProducts = AllProducts.filter(product => product.categoryId === categoryId && product.status === 'active');
+
+        // Loop through filtered products and create HTML elements
+        filteredProducts.forEach(product => {
+            const item = document.createElement('div');
+            item.innerHTML = `
+                <h3>${product.name} 
+                    <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
+                    <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+                    <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
+                </h3>
+            `;
+            productList.appendChild(item);
+        });
+    }
 }
 
 // Function to add a product to the cart
 function addToCart(productId) {
-    const selectedProduct = ActiveProducts.find(product => product.id === productId);
+    const selectedProduct = AllProducts.find(product => product.id === productId);
 
     // Checking if the product is already in the cart
     const existingCartItem = cartItems.find(item => item.id === selectedProduct.id);
@@ -155,7 +185,7 @@ function removeFromCart(productId) {
             // If the quantity reaches 0, remove the product from the cart
             cartItems = cartItems.filter(item => item.id !== productId);
 
-            const selectedProduct = ActiveProducts.find(product => product.id === productId);
+            const selectedProduct = AllProducts.find(product => product.id === productId);
             showNotification(`${selectedProduct.name} removed from the cart.`, false);
         }
     }

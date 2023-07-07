@@ -5,27 +5,47 @@ function displayCartItems() {
     let listItemFormat = '';
     let ItemCounter = 0;
 
-    // Sort the cart items based on their IDs
-    const sortedCartItems = cartItems.sort((a, b) => a.id - b.id);
+    // Check if the AllProducts array exists in localStorage and is not empty
+    const storedAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
+    const isAllProductsEmpty = !storedAllProducts || storedAllProducts.length === 0;
 
-    sortedCartItems.forEach(item => {
-        // Find the corresponding product based on the item's ID
-        const product = AllProducts.find(product => product.id === item.id);
+    if (isAllProductsEmpty) {
+        // If AllProducts is empty or not found in localStorage, use the AllProducts constant
+        AllProducts.forEach(product => {
+            // Check if the product is active and has a quantity greater than 0
+            if (product.status === 'active' && product.quantity > 0) {
+                if (ItemCounter % 4 === 0) {
+                    listItemFormat += '<br>';
+                }
 
-        if (product) {
-            if (ItemCounter % 4 === 0) {
-                listItemFormat += '<br>';
+                // Display the product with ID and quantity
+                listItemFormat += `<li>${product.name} | Quantity: ${product.quantity}</li>`;
+                ItemCounter++;
             }
+        });
+    } else {
+        // Sort the cart items based on their IDs
+        const sortedCartItems = cartItems.sort((a, b) => a.id - b.id);
 
-            // Display the product with ID and quantity
-            listItemFormat += `<li>${product.name} | Quantity: ${item.quantity}</li>`;
-            ItemCounter++;
-        }
-    });
+        sortedCartItems.forEach(item => {
+            // Find the corresponding product based on the item's ID
+            const product = storedAllProducts.find(product => product.id === item.id && product.status === 'active');
+
+            if (product) {
+                if (ItemCounter % 4 === 0) {
+                    listItemFormat += '<br>';
+                }
+
+                // Display the product with ID and quantity
+                listItemFormat += `<li>${product.name} | Quantity: ${item.quantity}</li>`;
+                ItemCounter++;
+            }
+        });
+    }
 
     cartItemsList.innerHTML = listItemFormat;
 
-    //Calling calculateCartItems to update the numbers
+    // Calling calculateCartItems to update the numbers
     calculateCartItems();
 }
 
@@ -41,35 +61,45 @@ function convertCartListToExcel() {
     const CustomFileNameInput = document.getElementById('CustomFileNameInput');
     const userProvidedFileName = CustomFileNameInput.value;
 
-    // Creating the filanem based on user input or providing the default (fileName)
+    // Creating the filename based on user input or providing the default (fileName)
     const FinalFileName = userProvidedFileName.trim() !== '' ? userProvidedFileName : DefaultFileName;
-    
+
+    // Get the products array from localStorage or use the constant if it's empty
+    const storedAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
+    const allProducts = storedAllProducts && storedAllProducts.length > 0 ? storedAllProducts : AllProducts;
+
+    // Filter the cart items for active products with quantities greater than 0
+    const activeCartItems = cartItems.filter(item => {
+        const product = allProducts.find(product => product.id === item.id && product.status === 'active');
+        return product && item.quantity > 0;
+    });
+
     // Create an HTML table with borders
     let htmlContent = '<table border="1">';
     htmlContent += '<tr><th>Product</th><th>Quantity</th></tr>';
-    cartItems.forEach((item) => {
+    activeCartItems.forEach(item => {
         htmlContent += `<tr><td>${item.name}</td><td>${item.quantity}</td></tr>`;
     });
     htmlContent += '</table>';
-    
+
     // Create a Blob with the HTML content
     const blob = new Blob([htmlContent], { type: 'application/vnd.ms-excel' });
-    
+
     // Create the download link
     const url = URL.createObjectURL(blob);
     const downloadLink = createDownloadLink(url, FinalFileName);
     downloadLink.style.display = 'none';
     document.body.appendChild(downloadLink);
 
-    // Auto-Copying the final border in the user's clipboard 
+    // Auto-Copying the final border in the user's clipboard
     navigator.clipboard.write([
         new ClipboardItem({
-            'text/html': new Blob([htmlContent], {type: 'text/html'})
+            'text/html': new Blob([htmlContent], { type: 'text/html' })
         })
     ]);
 
     downloadLink.click();
-    
+
     // Show download popup
     const downloadPopup = document.getElementById('downloadPopup');
     downloadPopup.style.display = 'flex';
@@ -78,32 +108,8 @@ function convertCartListToExcel() {
     }, 6000);
 }
 
-// //Converting Cart List into excel file {Without Borders}
-// function convertCartListToExcel() {
-//     const currentDate = new Date();
-//     const day = String(currentDate.getDate()).padStart(2, '0');
-//     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-//     const year = currentDate.getFullYear();
-//     const fileName = `Order_${day}-${month}-${year}.csv`;
-
-//     const csvContent = `Product,Quantity\n` + cartItems.map(item => `${item.name},${item.quantity}`).join('\n');
-//     const excelContent = `data:text/csv;charset=utf-8,\uFEFF${encodeURIComponent(csvContent)}`;
-
-//     const downloadLink = createDownloadLink(excelContent, fileName);
-//     downloadLink.style.display = 'none';
-//     document.body.appendChild(downloadLink);
-
-//     downloadLink.click();
-
-//     // Show download popup
-//     const downloadPopup = document.getElementById('downloadPopup');
-//     downloadPopup.style.display = 'flex';
-//     setTimeout(() => {
-//         downloadPopup.style.display = 'none';
-//     }, 6000);
-// }
-
-function createDownloadLink(content, filename) {    //Creating download link
+//Creating download link
+function createDownloadLink(content, filename) {
     const downloadLink = document.createElement('a');
     downloadLink.href = content;
     downloadLink.download = filename;
