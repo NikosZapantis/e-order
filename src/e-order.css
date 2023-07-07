@@ -244,9 +244,6 @@ footer {
 #view-active-products {
     border: none;
     background-color: transparent;
-}
-
-#view-active-products {
     cursor: pointer;
 }
 
@@ -408,4 +405,43 @@ input:checked[type="checkbox"]:before {
     left: 25px;
     background: #d6d3d3;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Media queries for responsivness {on-process} */
+@media (min-width: 320px) and (max-width: 1000px) {
+    #clear-cart-button {
+        top: 2%;
+        left: 50%;
+        width: 20%;
+        height: 2.5%;
+    }
+
+    #activeProducts {
+        top: 2%;
+        left: 80%;
+        width: 10%;
+        height: 1.5%;
+    }
+
+    #my-cart {
+        top: 1%;
+        right: 5%;
+    }
+
+    #return-to-main {
+        top: 2%;
+        right: 3%;
+        width: 25%;
+        height: 2%;
+    }
+
+    #generateExcelBtn {
+        width: 30%;
+        left: 35%;
+    }
+
+    #CustomFileNameInput {
+        width: 18%;
+        left: 40.5%
+    }
 }
