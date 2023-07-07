@@ -90,6 +90,48 @@ footer {
     cursor: pointer;
 }
 
+/* Keyframes animation */
+@keyframes CartShake {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(-5px);
+    }
+    20% {
+        transform: translateY(5px);
+    }
+    30% {
+        transform: translateY(-3px);
+    }
+    40% {
+        transform: translateY(3px);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    60% {
+        transform: translateY(2px);
+    }
+    70% {
+        transform: translateY(-1px);
+    }
+    80% {
+        transform: translateY(1px);
+    }
+    90% {
+        transform: translateY(-1px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Animation for the cart when the user adds a product for the first time and when the user removes the product (quantity < 1) from the cart */
+.CartShake-animation {
+    animation: CartShake 0.8s ease-in-out;
+}
+
 #clear-cart-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
