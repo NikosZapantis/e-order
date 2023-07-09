@@ -287,13 +287,13 @@ footer {
 .quantityBtnAdd {
     padding: 2px 5px;
     position: fixed;
-    left: 25%;
+    left: 26%;
 }
 
 .quantityBtnRemove {
     padding: 2px 7px;
     position: fixed;
-    left: 20%;
+    left: 19%;
 }
 
 .quantityCounter {
