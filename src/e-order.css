@@ -247,6 +247,26 @@ footer {
     cursor: pointer;
 }
 
+#print-productList {
+    position: fixed;
+    right: 3%;
+    top: 10%;
+    width: 15%;
+    height: 4%;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: #08090c;
+    color: #d70000;
+    padding: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#print-productList:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .quantityBtnRemove, .quantityBtnAdd {
     background-color: transparent;
     border: 2px solid #adaf11;
@@ -408,23 +428,23 @@ input:checked[type="checkbox"]:before {
 }
 
 /* Media queries for responsivness {on-process} */
-@media (min-width: 320px) and (max-width: 1000px) {
+@media (min-width: 320px) and (max-width: 1592px) {
     #clear-cart-button {
-        top: 2%;
+        top: 2.5%;
         left: 50%;
         width: 20%;
         height: 2.5%;
     }
 
     #activeProducts {
-        top: 2%;
-        left: 80%;
-        width: 10%;
+        top: 2.5%;
+        left: 75%;
+        width: 15%;
         height: 1.5%;
     }
 
     #my-cart {
-        top: 1%;
+        top: 1.3%;
         right: 5%;
     }
 
@@ -432,7 +452,7 @@ input:checked[type="checkbox"]:before {
         top: 2%;
         right: 3%;
         width: 25%;
-        height: 2%;
+        height: 4%;
     }
 
     #generateExcelBtn {
