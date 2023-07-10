@@ -219,7 +219,7 @@ function handleCategoryFocus(event) {
         });
     }
 }
- 
+
 // Add event listener to the category list container so I can declare which one to focus
 const categoryList = document.getElementById('category-list');
 categoryList.addEventListener('click', handleCategoryFocus);
