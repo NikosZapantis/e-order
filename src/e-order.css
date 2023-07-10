@@ -247,6 +247,37 @@ footer {
     cursor: pointer;
 }
 
+#enable-all, #disable-all, #default-all {
+    position: fixed;
+    top: 10%;
+    width: 2%;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #000000;
+    box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 1);
+}
+
+#enable-all {
+    right: 15%;
+    color: green;
+}
+
+#disable-all {
+    right: 10%;
+    color: red;
+}
+
+#default-all {
+    right: 5%;
+    color: orange;
+}
+
+#enable-all:hover, #disable-all:hover, #default-all:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .quantityBtnRemove, .quantityBtnAdd {
     background-color: transparent;
     border: 2px solid #adaf11;
