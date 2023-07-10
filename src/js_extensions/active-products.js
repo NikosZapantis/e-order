@@ -78,53 +78,37 @@ function toggleProductActiveState(productId, isActive) {
     }
 }
 
-//Print the Product List
-function printProductList() {
-    // Create a new document
-    const docx = new DocxGen();
-  
-    // Create the table with header row
-    const table = [
-      ['Product', 'Quantity', 'Quantity', 'Quantity', 'Quantity', 'Quantity', 'Quantity', 'Quantity'],
-    ];
-  
-    // Populate the table with product data
-    for (const product of AllProducts) {
-      table.push([product.name, '', '', '', '', '', '', '']);
+// Function to enable all products
+function EnableAllProducts() {
+  const currentlyAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
+
+  currentlyAllProducts.forEach(product => {
+    if(product.status === 'disabled') {
+      product.status = 'active';
     }
-  
-    // Generate the document content
-    const content = [
-      {
-        table: {
-          rows: table.map(row => ({
-            cells: row.map(cell => ({ text: cell })),
-          })),
-        },
-      },
-    ];
-  
-    // Set the document content
-    docx.setData({
-      content,
-    });
-  
-    // Render the document
-    docx.render();
-  
-    // Generate the blob for the document
-    const out = docx.getZip().generate({ type: 'blob' });
-  
-    // Create a temporary anchor element
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(out);
-    link.download = 'product_list.docx';
-  
-    // Simulate a click event to trigger the download
-    link.dispatchEvent(new MouseEvent('click'));
-  
-    // Clean up the temporary URL
-    URL.revokeObjectURL(link.href);
+  });
+
+  // Save the updated currentlyAllProducts array to localStorage
+  localStorage.setItem('AllProducts', JSON.stringify(currentlyAllProducts));
+}
+
+// Function to disable all products
+function DisableAllProducts() {
+  const currentlyAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
+
+  currentlyAllProducts.forEach(product => {
+    if(product.status === 'active') {
+      product.status = 'disabled';
+    }
+  });
+
+  // Save the updated currentlyAllProducts array to localStorage
+  localStorage.setItem('AllProducts', JSON.stringify(currentlyAllProducts));
+}
+
+// Function to return back to default product's status
+function DefaultAllProducts() {
+  //On process
 }
 
 // Display all products

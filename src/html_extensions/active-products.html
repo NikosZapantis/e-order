@@ -13,8 +13,14 @@
         <i class="fas fa-home"></i>
     </button>
 
-    <button id="print-productList" onclick="printProductList()">
-        <i class="fas fa-print"></i>
+    <button id="enable-all" onclick="EnableAllProducts()">
+        <i class="fas fa-check"></i>
+    </button>
+    <button id="disable-all" onclick="DisableAllProducts()">
+        <i class="fas fa-exclamation"></i>
+    </button>
+    <button id="default-all" onclick="DefaultAllProducts()">
+        <i class="fas fa-archive"></i>
     </button>
     
     <h1 class="gradient-text">Active Products</h1>
@@ -28,7 +34,6 @@
 
     <script src="../e-order.js"></script>
     <script src="../js_extensions/active-products.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docxtemplater@3.21.0/dist/docxtemplater.js"></script>
 
     <!-- <footer>
         <p>&copy; 2023 E-Paraggelia Application</p>
