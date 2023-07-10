@@ -200,10 +200,14 @@ function getProductQuantity(productId) {
 // Function to handle category focus
 function handleCategoryFocus(event) {
     const clickedButton = event.target;
+    const footer = document.querySelector('footer');
 
     // Check if a category button was clicked
     if (clickedButton.tagName === 'BUTTON') {
         const categoryId = parseInt(clickedButton.dataset.categoryId);
+
+        // Hiding the footer when a category is pressed so it doesn bother the overflow
+        footer.style.display = 'none';
 
         // // Filter and display products by category
         // filterProducts(categoryId);
@@ -242,11 +246,13 @@ function filterProducts(categoryId) {
         filteredProducts.forEach(product => {
             const item = document.createElement('div');
             item.innerHTML = `
-                <h3>${product.name} 
-                    <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
-                    <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
-                    <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
-                </h3>
+                <div class="product-container">
+                    <h3>${product.name} 
+                        <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
+                        <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+                        <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
+                    </h3>
+                </div>
             `;
             productList.appendChild(item);
         });
@@ -258,11 +264,13 @@ function filterProducts(categoryId) {
         filteredProducts.forEach(product => {
             const item = document.createElement('div');
             item.innerHTML = `
-                <h3>${product.name} 
-                    <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
-                    <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
-                    <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
-                </h3>
+                <div class="product-container">
+                    <h3>${product.name} 
+                        <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
+                        <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+                        <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
+                    </h3>
+                </div>
             `;
             productList.appendChild(item);
         });
