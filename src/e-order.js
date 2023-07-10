@@ -207,7 +207,16 @@ function handleCategoryFocus(event) {
         const categoryId = parseInt(clickedButton.dataset.categoryId);
 
         // Hiding the footer when a category is pressed so it doesn bother the overflow
-        footer.style.display = 'none';
+        // Transition so the footer fades out
+        footer.style.transition = 'opacity 0.7s';
+
+        // Starting the fade-out animation
+        footer.style.opacity = '0';
+
+        // Fade out animation with timeout
+        setTimeout(() => {
+            footer.style.display = 'none';
+        }, 500);
 
         // // Filter and display products by category
         // filterProducts(categoryId);
