@@ -90,6 +90,9 @@ function EnableAllProducts() {
 
   // Save the updated currentlyAllProducts array to localStorage
   localStorage.setItem('AllProducts', JSON.stringify(currentlyAllProducts));
+
+  // Refresh the displayed products
+  displayAllProducts();
 }
 
 // Function to disable all products
@@ -104,11 +107,28 @@ function DisableAllProducts() {
 
   // Save the updated currentlyAllProducts array to localStorage
   localStorage.setItem('AllProducts', JSON.stringify(currentlyAllProducts));
+
+  // Refresh the displayed products
+  displayAllProducts();
 }
 
 // Function to return back to default product's status
 function DefaultAllProducts() {
   //On process
+  const currentlyAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
+
+  currentlyAllProducts.forEach(product => {
+    const defaultProduct = AllProducts.find(defaultProd => defaultProd.id === product.id);
+    if (defaultProduct) {
+      product.status = defaultProduct.status; // Set the product's status to the default status from the AllProducts array
+    }
+  });
+
+  // Save the updated currentlyAllProducts array to localStorage
+  localStorage.setItem('AllProducts', JSON.stringify(currentlyAllProducts));
+
+  // Refresh the displayed products
+  displayAllProducts();
 }
 
 // Display all products
