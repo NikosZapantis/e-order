@@ -441,6 +441,7 @@ input:checked[type="checkbox"]:before {
 /* Media queries for responsivness {on-process} */
 @media (min-width: 320px) and (max-width: 1592px) {
     #clear-cart-button {
+        position: fixed;
         top: 2.5%;
         left: 50%;
         width: 20%;
@@ -448,6 +449,7 @@ input:checked[type="checkbox"]:before {
     }
 
     #activeProducts {
+        position: fixed;
         top: 2.5%;
         left: 75%;
         width: 15%;
@@ -455,11 +457,13 @@ input:checked[type="checkbox"]:before {
     }
 
     #my-cart {
+        position: fixed;
         top: 1.3%;
         right: 5%;
     }
 
     #return-to-main {
+        position: fixed;
         top: 2%;
         right: 3%;
         width: 25%;
@@ -467,11 +471,13 @@ input:checked[type="checkbox"]:before {
     }
 
     #generateExcelBtn {
+        position: fixed;
         width: 30%;
         left: 35%;
     }
 
     #CustomFileNameInput {
+        position: fixed;
         width: 18%;
         left: 40.5%
     }
