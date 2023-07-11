@@ -8,32 +8,40 @@
 </head>
 <body>
     <h1 class="gradient-text">My Cart</h1>
+    
+    <!-- Vanish cart items button -->
     <button id="clear-cart-button" onclick="clearCart()">
         Vanish My-cart
     </button>
+    
+    <!-- Return to main {redirects to index.html} -->
     <button id="return-to-main" onclick="redirectToMainPage()">
         <i class="fas fa-home"></i>
     </button>
     
+    <!-- Here all the products added to the cart are displayed -->
     <ul id="cart-items"></ul>
 
     <br>
+    <!-- Informing user about total products counter and unique products counter -->
     <p id="total-products"></p>
     <p id="unique-products"></p>
 
+    <!-- Order is ready popup notification in the middle of the screen -->
     <div id="downloadPopup">
         <i class="fas fa-check"></i>
         <p>Your order is ready!</p>
     </div>
 
+    <!-- User can type his custom name that he wants the file to have -->
     <input type="text" id="CustomFileNameInput" placeholder="Enter custom file name">
+    <!-- Button that when pressed it forces an .xls file download with all the products in the cartItems -->
     <button id="generateExcelBtn" onclick="convertCartListToExcel()">Generate Excel</button>
 
+    <!-- Connections between javascript files so all the functions run properly -->
     <script src="../e-order.js"></script>
     <script src="../js_extensions/my-cart.js"></script>
 
-    <!-- <footer>
-        <p>&copy; 2023 E-Paraggeliamou Application</p>
-    </footer> -->
 </body>
+
 </html>

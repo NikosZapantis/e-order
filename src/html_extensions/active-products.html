@@ -9,16 +9,20 @@
 </head>
 
 <body>
+    <!-- Return to main {redirects to index.html} -->
     <button id="return-to-main" onclick="redirectToMainPage()">
         <i class="fas fa-home"></i>
     </button>
 
+    <!-- It forces to change the status of all products to 'active' -->
     <button id="enable-all" onclick="EnableAllProducts()">
         <i class="fas fa-check"></i>
     </button>
+    <!-- It forces to change the status of all products to 'disabled' -->
     <button id="disable-all" onclick="DisableAllProducts()">
         <i class="fas fa-exclamation"></i>
     </button>
+    <!-- It forces to change the status of all products to default as on the const AllProducts -->
     <button id="default-all" onclick="DefaultAllProducts()">
         <i class="fas fa-archive"></i>
     </button>
@@ -26,18 +30,17 @@
     <h1 class="gradient-text">Active Products</h1>
 
     <h2>All Products</h2>
+    <!-- Here are displayed all the products -->
     <div id="all-products">
         <form id="product-form">
             <div id="product-list"></div>
         </form>
     </div>
 
+    <!-- Connections between javascript files so all the functions run properly -->
     <script src="../e-order.js"></script>
     <script src="../js_extensions/active-products.js"></script>
 
-    <!-- <footer>
-        <p>&copy; 2023 E-Paraggelia Application</p>
-    </footer> -->
 </body>
 
 </html>

@@ -12,21 +12,24 @@
     <header>
         <h1 class="gradient-text">E-Paraggelia</h1>
         <br><br><br>
+        <!-- Vanish cart items button -->
         <button id="clear-cart-button" onclick="clearCart()">
             Vanish My-cart
         </button>
     </header>
 
+    <!-- Here is where the categories are displayed -->
     <section id="category-list">
-        
     </section>
 
+    <!-- Here is where the products and their buttons are displayed -->
     <section id="product-list">
-
     </section>
 
+    <!-- Notification when user add product or removes from the cart {Only when quantity gets 1{when adding} or 0 {when removing}} -->
     <div id="notification"></div>
 
+    <!-- My-Cart section is the cart button / {redirect to my-cart.html} -->
     <section id="my-cart" class="CartShake-animation">
         <button id="view-cart-button" onclick="viewCart()">
             <i class="fas fa-shopping-cart"></i>
@@ -34,12 +37,14 @@
         </button>
     </section>
 
+    <!-- ActiveProducts button {redirect to active-products.html} -->
     <section id="activeProducts">
         <button id="view-active-products" onclick="viewActiveProducts()">
             <i class="fas fa-search"> Products</i>
         </button>
     </section>
 
+    <!-- Footer hidden when category is selected -->
     <footer>
         <p>&copy; 2023 E-Paraggelia Application</p>
     </footer>
