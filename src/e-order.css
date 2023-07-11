@@ -438,6 +438,36 @@ input:checked[type="checkbox"]:before {
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: black;
+    background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: rgb(255, 153, 0);
+    outline: 1px solid rgb(0, 0, 0);
+}
+
+/* body::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: black;
+    background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: linear-gradient(45deg, #e253e2, #28c9e8);
+    outline: 1px solid rgb(0, 0, 0);
+} */
+
 /* Media queries for responsivness {on-process} */
 @media (min-width: 320px) and (max-width: 1592px) {
     #clear-cart-button {
