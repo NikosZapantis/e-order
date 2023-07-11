@@ -1,9 +1,9 @@
 function displayCartItems() {
     const cartItemsList = document.getElementById('cart-items');
-    cartItemsList.innerHTML = '';   // Clearing existing cart items
+    cartItemsList.innerHTML = ''; // Clearing existing cart items
 
     let listItemFormat = '';
-    let ItemCounter = 0;
+    let itemCounter = 0;
 
     // Check if the AllProducts array exists in localStorage and is not empty
     const storedAllProducts = JSON.parse(localStorage.getItem('AllProducts'));
@@ -12,41 +12,43 @@ function displayCartItems() {
     if (isAllProductsEmpty) {
         // If AllProducts is empty or not found in localStorage, use the AllProducts constant
         AllProducts.forEach(product => {
-            // Check if the product is active and has a quantity greater than 0
-            if (product.status === 'active' && product.quantity > 0) {
-                if (ItemCounter % 4 === 0) {
-                    listItemFormat += '<br>';
-                }
-
-                // Display the product with ID and quantity
-                listItemFormat += `<li>${product.name} | Quantity: ${product.quantity}</li>`;
-                ItemCounter++;
+        // Check if the product is active and has a quantity greater than 0
+        if (product.status === 'active' && product.quantity > 0) {
+            if (itemCounter % 4 === 0) {
+            listItemFormat += '<br>';
             }
+
+            // Display the product with ID and quantity
+            listItemFormat += `<li>${product.name} | <span class="gradient-text">Quantity:</span> <span class="product-quantity">${product.quantity}</span></li>`;
+            itemCounter++;
+        }
         });
     } else {
         // Sort the cart items based on their IDs
         const sortedCartItems = cartItems.sort((a, b) => a.id - b.id);
 
         sortedCartItems.forEach(item => {
-            // Find the corresponding product based on the item's ID
-            const product = storedAllProducts.find(product => product.id === item.id && product.status === 'active');
+        // Find the corresponding product based on the item's ID
+        const product = storedAllProducts.find(
+            product => product.id === item.id && product.status === 'active'
+        );
 
-            if (product) {
-                if (ItemCounter % 4 === 0) {
-                    listItemFormat += '<br>';
-                }
-
-                // Display the product with ID and quantity
-                listItemFormat += `<li>${product.name} | Quantity: ${item.quantity}</li>`;
-                ItemCounter++;
+        if (product) {
+            if (itemCounter % 4 === 0) {
+            listItemFormat += '<br>';
             }
-        });
-    }
 
-    cartItemsList.innerHTML = listItemFormat;
+            // Display the product with ID and quantity
+            listItemFormat += `<li>${product.name} | <span class="gradient-text">Quantity: ${item.quantity}</span></li>`;
+            itemCounter++;
+        }
+    });
+}
 
-    // Calling calculateCartItems to update the numbers
-    calculateCartItems();
+cartItemsList.innerHTML = listItemFormat;
+
+// Calling calculateCartItems to update the numbers
+calculateCartItems();
 }
 
 //Converting Cart List into excel file {With Borders}
