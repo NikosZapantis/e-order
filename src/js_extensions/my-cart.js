@@ -19,7 +19,7 @@ function displayCartItems() {
             }
 
             // Display the product with ID and quantity
-            listItemFormat += `<li>${product.name} | <span class="gradient-text">Quantity:</span> <span class="product-quantity">${product.quantity}</span></li>`;
+            listItemFormat += `<li>${product.name} | <span class="gradient-text">Quantity: ${item.quantity}</span></li>`;
             itemCounter++;
         }
         });
@@ -78,9 +78,9 @@ function convertCartListToExcel() {
 
     // Create an HTML table with borders
     let htmlContent = '<table border="1">';
-    htmlContent += '<tr><th>Product</th><th>Quantity</th></tr>';
+    htmlContent += '<tr><th>Προϊόν</th><th>Ποσότητα</th></tr>';
     activeCartItems.forEach(item => {
-        htmlContent += `<tr><td>${item.name}</td><td>${item.quantity}</td></tr>`;
+        htmlContent += `<tr><td>${item.name}</td><th>${item.quantity}</th></tr>`;
     });
     htmlContent += '</table>';
 
