@@ -78,7 +78,7 @@ function convertCartListToExcel() {
 
     // Create an HTML table with borders
     let htmlContent = '<table border="1">';
-    htmlContent += '<tr><th>Προϊόν</th><th>Ποσότητα</th></tr>';
+    htmlContent += '<tr><th>Product</th><th>Quantity</th></tr>';
     activeCartItems.forEach(item => {
         htmlContent += `<tr><td>${item.name}</td><th>${item.quantity}</th></tr>`;
     });
