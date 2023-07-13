@@ -53,7 +53,7 @@ function convertCartToExcelList() {
   let htmlContent = '<table border="1">';
 
   // Add table headers
-  htmlContent += '<tr><th>Προϊόν</th><th>Κατηγορία</th></tr>';
+  htmlContent += '<tr><th>Product</th><th>Category</th></tr>';
 
   // Iterate over each product
   AllProducts.forEach(product => {
