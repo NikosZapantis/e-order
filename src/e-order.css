@@ -342,6 +342,12 @@ footer {
     padding: 3px 7px;
     position: absolute;
     left: 40.5%;
+    color: beige;
+}
+
+.quantityCounter.greenCounter {
+    transform: scale(1.5);
+    color: green;
 }
   
 h3 {
@@ -359,7 +365,7 @@ li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/* Order is ready popup customization */
+/* (Order is ready) popup customization */
 @keyframes popUpAnimation {
     0% {
         transform: translate(-50%, -50%) scale(0.2);
