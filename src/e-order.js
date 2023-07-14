@@ -322,6 +322,14 @@ function redirectToMainPage() {
 function clearCart() {
     localStorage.removeItem('cartItems');
     cartItems = [];
+
+    // Clear all class modifications
+    for (let key in localStorage) {
+        if (key.startsWith('quantityClass_')) {
+            localStorage.removeItem(key);
+        }
+    }
+    
     location.reload();
 }
 
