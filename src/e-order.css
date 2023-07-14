@@ -346,8 +346,9 @@ footer {
 }
 
 .quantityCounter.greenCounter {
-    transform: scale(1.5);
+    transform: scale(1.3);
     color: green;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 1.8);
 }
   
 h3 {
