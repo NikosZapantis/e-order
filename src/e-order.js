@@ -193,11 +193,11 @@ function addToCart(productId) {
 
         showNotification(`${selectedProduct.name} added to the cart.`, true);
 
-        //Adding the shake-animation class to the shopping cart
+        // Adding the shake-animation class to the shopping cart
         const cartSection = document.getElementById('my-cart');
         cartSection.classList.add('CartShake-animation');
 
-        //Removing the shake-animation class after 0.4seconds
+        // Removing the shake-animation class after 0.4seconds
         setTimeout(() => {
             cartSection.classList.remove('CartShake-animation');
         }, 800);
