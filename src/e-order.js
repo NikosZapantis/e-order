@@ -137,6 +137,15 @@ function filterProducts(categoryId) {
                     </h3>
                 </div>
             `;
+
+            // Apply class modification if present in localStorage
+            const quantityClassKey = `quantityClass_${product.id}`;
+            const quantityElement = item.querySelector('.quantityCounter');
+            const quantityClass = localStorage.getItem(quantityClassKey);
+            if (quantityElement && quantityClass) {
+                quantityElement.classList.add(quantityClass);
+            }
+
             productList.appendChild(item);
         });
     } else {
@@ -146,15 +155,26 @@ function filterProducts(categoryId) {
         // Loop through filtered products and create HTML elements
         filteredProducts.forEach(product => {
             const item = document.createElement('div');
+
+            // <span class="quantityCounter ${getProductQuantity(product.id) >= 1 ? 'greenCounter' : ''}" id="quantity-${product.id}">${getProductQuantity(product.id)}</span>
             item.innerHTML = `
                 <div class="product-container">
                     <h3>${product.name} 
                         <button class="quantityBtnRemove" onclick="removeFromCart(${product.id})">-</button>
-                        <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span> 
+                        <span class="quantityCounter" id="quantity-${product.id}">${getProductQuantity(product.id)}</span>
                         <button class="quantityBtnAdd" onclick="addToCart(${product.id})">+</button>
                     </h3>
                 </div>
             `;
+
+            // Apply class modification if present in localStorage
+            const quantityClassKey = `quantityClass_${product.id}`;
+            const quantityElement = item.querySelector('.quantityCounter');
+            const quantityClass = localStorage.getItem(quantityClassKey);
+            if (quantityElement && quantityClass) {
+                quantityElement.classList.add(quantityClass);
+            }
+
             productList.appendChild(item);
         });
     }
@@ -193,7 +213,12 @@ function addToCart(productId) {
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
         quantityElement.textContent = getProductQuantity(productId);
+        quantityElement.classList.add('greenCounter'); // Add greenCounter class
     }
+
+    // Saving the class modification in localStorage
+    const quantityClassKey = `quantityClass_${productId}`;
+    localStorage.setItem(quantityClassKey, 'greenCounter');
 
     // Updating cart count
     UpdateCartCount();
@@ -232,6 +257,19 @@ function removeFromCart(productId) {
     const quantityElement = document.getElementById(`quantity-${productId}`);
     if (quantityElement) {
         quantityElement.textContent = getProductQuantity(productId);
+        if (existingCartItem && existingCartItem.quantity >= 1) {
+            quantityElement.classList.add('greenCounter'); // Add greenCounter class
+        } else {
+            quantityElement.classList.remove('greenCounter'); // Remove greenCounter class
+        }
+    }
+
+    // Saving the class modification in localStorage
+    const quantityClassKey = `quantityClass_${productId}`;
+    if (existingCartItem && existingCartItem.quantity >= 1) {
+        localStorage.setItem(quantityClassKey, 'greenCounter');
+    } else {
+        localStorage.removeItem(quantityClassKey);
     }
 
     // Updating cart count
